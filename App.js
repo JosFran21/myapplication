@@ -15,7 +15,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 
 
-class MyHomeScreen extends React.Component {
+/*class MyHomeScreen extends React.Component {
   static navigationOptions = {
     tabBarLabel: 'Home',
     // Note: By default the icon is only shown on iOS. Search the showIcon option below.
@@ -81,8 +81,8 @@ const MyApp = TabNavigator({
   },
 });
 AppRegistry.registerComponent('myapp', () => MyApp);
-
-/*const MainScreenNavigator  = TabNavigator({
+*/
+const MainScreenNavigator  = TabNavigator({
   Inicio: { screen: HomeScreen },
   Suscripciones: { screen: AllContactsScreen },
 });
@@ -100,4 +100,3 @@ const myapp = StackNavigator({
 
 // if you are using create-react-native-app you don't need this line
 AppRegistry.registerComponent('myapp', () => myapp);
-*/
