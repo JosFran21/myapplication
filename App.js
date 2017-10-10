@@ -3,6 +3,7 @@ import {
   AppRegistry,
   Text,
   View,
+  Image,
   StyleSheet,
   Button,
 } from 'react-native';
@@ -13,79 +14,95 @@ import RecentChatScreen from './screens/RecentChatScreen';
 import AllContactsScreen from './screens/AllContactsScreen';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
-
-
-/*class MyHomeScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Home',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./images/icons/menu_servicios.svg')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    );
-  }
-}
-
-class MyNotificationsScreen extends React.Component {
-  static navigationOptions = {
-    tabBarLabel: 'Notifications',
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('./images/icons/menu_acercade.svg')}
-        style={[styles.icon, {tintColor: tintColor}]}
-      />
-    ),
-  };
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.goBack()}
-        title="Go back home"
-      />
-    );
-  }
-}
+import ServicesScreen from './screens/ServicesScreen';
+import AcercaScreen from './screens/AcercaScreen';
+import FontAwesome, { Icons } from "react-native-fontawesome";
 
 const styles = StyleSheet.create({
-  icon: {
-    width: 26,
-    height: 26,
-  },
+	tab: {
+		padding: 0
+	},
+	indicator: {
+		width: 0,
+		height: 0
+	},
+	label: {
+		fontSize: 10
+	},
+	icon: {
+		width: 28,
+		height: 28,
+		//backgroundColor: '#f2c100',
+  	},
+	tabBar: {
+		backgroundColor: 'black',
+	}
 });
 
-const MyApp = TabNavigator({
-  Home: {
-    screen: MyHomeScreen,
-  },
-  Notifications: {
-    screen: MyNotificationsScreen,
-  },
-}, {
-  barTintColor: 'black',
-  tabBarPosition: 'top',
-  animationEnabled: true,
-  tabBarOptions: {
-    activeTintColor: '#f2c100',
-  },
-});
-AppRegistry.registerComponent('myapp', () => MyApp);
-*/
 const MainScreenNavigator  = TabNavigator({
-  Inicio: { screen: HomeScreen },
-  Suscripciones: { screen: AllContactsScreen },
-});
+  Inicio: { screen: HomeScreen,
+  navigationOptions: ({ navigation }) => ({
+				title: "Inicio",
+        tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('./images/valid-512.png')}
+          style={[styles.icon, {tintColor: tintColor}]}/>
+      ),
+			}) },
+  Acerca: {screen: AcercaScreen,
+    navigationOptions: ({ navigation }) => ({
+				title: "Acerca de",
+				tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('./images/icons/visa.png')}
+          style={[styles.icon, {tintColor: tintColor}]}/>
+      ),
+			})  },
+  Servicios: {screen: ServicesScreen,
+    navigationOptions: ({ navigation }) => ({
+				title: "Servicios",
+			tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('./images/idea1.png')}
+          style={[styles.icon, {tintColor: tintColor}]}/>
+      ),
+			})  },
+  Suscripciones: { screen: AllContactsScreen,
+  navigationOptions: ({ navigation }) => ({
+				title: "Suscripciones",
+				tabBarIcon: ({ tintColor }) => (
+        <Image
+          source={require('./images/icons/mastercard.png')}
+          style={[styles.icon, {tintColor: tintColor}]}/>
+      ),
+			})  },
+}, 
+  {
+		//initialRouteName: "ScoresAndOdds",
+		lazyLoad: true,
+    tabBarPosition: 'bottom',
+		swipeEnabled: true,
+		animationEnabled: true,
+		lazy: true,
+		//order: ["Videos", "ScoresAndOdds", "Picks", "MyScores"],
+		//backBehavior: "initialRoute",
+		tabBarOptions: {
+      activeTintColor: '#f2c100',
+			inactiveTintColor: 'white',
+			showLabel: true,
+			showIcon: true,
+			upperCaseLabel: false,
+			pressColor: 'white',
+			scrollEnabled: false,
+			tabStyle: styles.tab,
+			//indicatorStyle: styles.indicator,
+			labelStyle: styles.label,
+			//iconStyle: styles.icon,
+			style: styles.tabBar
+		}
+	}
+  
+  );
 
 const myapp = StackNavigator({
   Home: { 
@@ -96,7 +113,37 @@ const myapp = StackNavigator({
   },
   Chat: { screen: ChatScreen },
   Login: { screen: LoginScreen },
-})
+}
+	
+
+
+)
 
 // if you are using create-react-native-app you don't need this line
 AppRegistry.registerComponent('myapp', () => myapp);
+
+
+
+
+
+
+
+
+  // navigator config
+  /*{
+    lazyLoad: true, // render the tabs lazily
+    tabBarPosition: 'bottom', // where are the tabs shown
+    backBehavior: 'none', // back button doesn't take you to the initial tab
+    tabBarOptions: {
+    activeTintColor: '#f2c100',
+    labelStyle: {
+      fontSize: 11,
+      padding:  -10,
+      margin: -10,
+      height: 20,
+      },
+      style: {
+        backgroundColor: 'black',
+      },
+    },
+  },*/
