@@ -14,6 +14,7 @@ import RecentChatScreen from './screens/RecentChatScreen';
 import AllContactsScreen from './screens/AllContactsScreen';
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import LogupScreen from './screens/LogupScreen';
 import ServicesScreen from './screens/ServicesScreen';
 import AcercaScreen from './screens/AcercaScreen';
 import FontAwesome, { Icons } from "react-native-fontawesome";
@@ -49,9 +50,9 @@ const MainScreenNavigator  = TabNavigator({
           style={[styles.icon, {tintColor: tintColor}]}/>
       ),
 			}) },
-  Acerca: {screen: AcercaScreen,
+  Acerca: {screen: LogupScreen,
     navigationOptions: ({ navigation }) => ({
-				title: "Acerca de",
+				title: "Registrate",
 				tabBarIcon: ({ tintColor }) => (
         <Image
           source={require('./images/icons/visa.png')}

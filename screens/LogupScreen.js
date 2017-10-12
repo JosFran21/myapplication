@@ -12,17 +12,18 @@ import {
   InputField,
   KeyboardAvoidingView,
 } from 'react-native';
-export default class LoginScreen extends React.Component {
+export default class LogupScreen extends React.Component {
   static navigationOptions = {
-    title: 'Login',
+    title: 'Logup',
   };
   
   constructor() {
     super();
     this.state = { 
-    id: '',
     nombre: '',
-    pass: '',
+    apellido: '',
+    email:'',
+    pass:'',
     };
   }
   render() {
@@ -37,8 +38,9 @@ export default class LoginScreen extends React.Component {
                     />
             </View>
             <View style={styles.formContainer}>
+                  
                 <TextInput 
-                    placeholder="Username or email"
+                    placeholder="Nombre"
                     placeholderTextColor="rgba(255,255,255,0.9)"
                     returnKeyType="next"
                     onSubmitEditing={() => this.passwordinput.focus()}
@@ -46,6 +48,24 @@ export default class LoginScreen extends React.Component {
                     onChangeText={(nombre) => this.setState({nombre})}
                     value={this.state.nombre}
                     />   
+                <TextInput 
+                    placeholder="Apellido"
+                    placeholderTextColor="rgba(255,255,255,0.9)"
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.passwordinput.focus()}
+                    style={styles.Input} 
+                    onChangeText={(apellido) => this.setState({apellido})}
+                    value={this.state.apellido}
+                    /> 
+                <TextInput 
+                    placeholder="Email"
+                    placeholderTextColor="rgba(255,255,255,0.9)"
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.passwordinput.focus()}
+                    style={styles.Input} 
+                    onChangeText={(email) => this.setState({email})}
+                    value={this.state.email}
+                    />         
                 <TextInput 
                     placeholder="Password"
                     placeholderTextColor="rgba(255,255,255,0.9)"
@@ -56,90 +76,38 @@ export default class LoginScreen extends React.Component {
                     onChangeText={(pass) => this.setState({pass})}
                     value={this.state.pass}
                     />     
-                <TouchableOpacity onPress={this.sesion} style={styles.buttonContainer}>
+                <TouchableOpacity onPress={this.registrar} style={styles.buttonContainer}>
                     <Text  style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>                   
             </View>
       </KeyboardAvoidingView>
     );
   }
-
-    sesion = () => {
-      fetch('http://192.168.15.26:8080/api/register/fake/1',{
-      method: 'GET',
-      }
-     )
-      .then((response) => response.json())
-      .then((responseJson) => {
-        alert(responseJson);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-
-    }
-    
-    /*sesion = () =>{
-    
-      alert(this.state.nombre+' '+this.state.pass);
-      var id = this.state.nombre;
-      //Tomr datos de el endpoint de backend
-      fetch('http://192.168.0.103:8080/api/register/fake/'+id,{
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + this.authToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-          
-        },
-        body: JSON.stringify({
-            id: this.state.nombre,
-            
-        })
-      })
-
-      .then((response)=> response.json())
-      .then((resp) => {
-          alert("La búsqueda es:"+resp.mensaje);
-      })
-      .done();
-
-  }*/
-  /** */
-  /* Este si funciona
-  **/
   registrar = () =>{
     
       alert(this.state.nombre+' '+this.state.pass);
       //Tomr datos de el endpoint de backend
-      fetch('http://192.168.0.103:8080/api/register/fake?nombre=lalo',{
+      fetch('http://192.168.0.103:8080/api/register/fake',{
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Authorization': 'Bearer ' + this.authToken,
           'Content-Type': 'application/x-www-form-urlencoded',
-          //'Accept': 'application/json',
-          //'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
             nombre: this.state.nombre,
-            apellido: 'Perez',
-            email: 'perez34@gmail.com',
+            apellido: this.state.apellido,
+            email: this.state.email,
             pass: this.state.pass,
         })
       })
 
       .then((response)=> response.json())
       .then((resp) => {
-          alert(resp.mensaje);
+          alert(resp);
       })
       .done();
 
   }
-
-
-
-
 }
 
 const styles = StyleSheet.create({
