@@ -84,10 +84,10 @@ export default class LogupScreen extends React.Component {
     );
   }
   registrar = () =>{
-    
+      console.log(this.state.nombre+' '+this.state.pass)
       alert(this.state.nombre+' '+this.state.pass);
       //Tomr datos de el endpoint de backend
-      fetch('http://192.168.0.103:8080/api/register/fake',{
+      fetch('http://192.168.15.26:8080/api/register/fake',{
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -100,10 +100,10 @@ export default class LogupScreen extends React.Component {
             pass: this.state.pass,
         })
       })
-
+      
       .then((response)=> response.json())
       .then((resp) => {
-          alert(resp);
+          alert(resp.error);
       })
       .done();
 
