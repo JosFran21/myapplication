@@ -65,7 +65,7 @@ export default class LoginScreen extends React.Component {
   }
 
     sesion = () => {
-      fetch('http://192.168.15.26:8080/api/register/fake/1',{
+      fetch('http://192.168.15.10:8080/api/register/fake/1',{
       method: 'GET',
       }
      )
@@ -108,34 +108,30 @@ export default class LoginScreen extends React.Component {
   /** */
   /* Este si funciona
   **/
-  registrar = () =>{
+  // registrar = () =>{
     
-      alert(this.state.nombre+' '+this.state.pass);
-      //Tomr datos de el endpoint de backend
-      fetch('http://192.168.0.103:8080/api/register/fake?nombre=lalo',{
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + this.authToken,
-          'Content-Type': 'application/x-www-form-urlencoded',
-          //'Accept': 'application/json',
-          //'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: JSON.stringify({
-            nombre: this.state.nombre,
-            apellido: 'Perez',
-            email: 'perez34@gmail.com',
-            pass: this.state.pass,
-        })
-      })
+  //     alert(this.state.nombre+' '+this.state.pass);
+  //     //Tomr datos de el endpoint de backend
+  //     fetch('http://192.168.15.10:8080/api/register/fake/4',{
+  //       method: 'GET',
+  //       headers: {
+  //         'Accept': 'application/json',
+  //         'Content-Type': 'application/x-www-form-urlencoded',
+  //         //'Accept': 'application/json',
+  //         //'Content-Type': 'application/x-www-form-urlencoded',
+  //       },
+  //       body: JSON.stringify({
+            
+  //       })
+  //     })
 
-      .then((response)=> response.json())
-      .then((resp) => {
-          alert(resp.mensaje);
-      })
-      .done();
+  //     .then((response)=> response.json())
+  //     .then((resp) => {
+  //         alert(resp.mensaje);
+  //     })
+  //     .done();
 
-  }
+  // }
 
 
 
