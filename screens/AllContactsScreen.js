@@ -7,6 +7,7 @@ import {
   Button,
   Image,
   ListView,
+  ScrollView,
   TouchableHighLight
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
@@ -110,16 +111,22 @@ export default class AllContactsScreen extends React.Component {
         return this.renderLoadingView();
       }
        return (
+          <ScrollView>
             <View style={{flex: 1, paddingTop: 25}}>
                 <ListView
                     dataSource={this.state.clonedMovies}
                     renderRow={
-                        (rowData) => <Text>Title: {rowData.title}, release year: {rowData.releaseYear}</Text>
-                    }
-                >
-
+                        (rowData) => <Text style={style.comicTittle}>Title: {rowData.title}, release year: {rowData.releaseYear}</Text>
+                    }>
+                </ListView>
+                <ListView
+                    dataSource={this.state.clonedMovies}
+                    renderRow={
+                        (rowData) => <Text style={style.comicTittle}>Title: {rowData.title}, release year: {rowData.releaseYear}</Text>
+                    }>
                 </ListView>
             </View>
+         </ScrollView>   
         );
 
   }

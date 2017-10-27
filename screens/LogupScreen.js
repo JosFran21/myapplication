@@ -31,6 +31,7 @@ export default class LogupScreen extends React.Component {
     return (
       
       <KeyboardAvoidingView behavior ="padding"  style={styles.container}>
+        <ScrollView>
             <View style={styles.logoContainer}>
                 <Image 
                     style={styles.logo}
@@ -42,7 +43,6 @@ export default class LogupScreen extends React.Component {
                 <TextInput 
                     placeholder="Nombre"
                     placeholderTextColor="rgba(255,255,255,0.9)"
-                    returnKeyType="next"
                     onSubmitEditing={() => this.passwordinput.focus()}
                     style={styles.Input} 
                     onChangeText={(nombre) => this.setState({nombre})}
@@ -51,7 +51,6 @@ export default class LogupScreen extends React.Component {
                 <TextInput 
                     placeholder="Apellido"
                     placeholderTextColor="rgba(255,255,255,0.9)"
-                    returnKeyType="next"
                     onSubmitEditing={() => this.passwordinput.focus()}
                     style={styles.Input} 
                     onChangeText={(apellido) => this.setState({apellido})}
@@ -60,7 +59,6 @@ export default class LogupScreen extends React.Component {
                 <TextInput 
                     placeholder="Email"
                     placeholderTextColor="rgba(255,255,255,0.9)"
-                    returnKeyType="next"
                     onSubmitEditing={() => this.passwordinput.focus()}
                     style={styles.Input} 
                     onChangeText={(email) => this.setState({email})}
@@ -70,7 +68,6 @@ export default class LogupScreen extends React.Component {
                     placeholder="Password"
                     placeholderTextColor="rgba(255,255,255,0.9)"
                     secureTextEntry
-                    returnKeyType="go"
                     style={styles.Input} 
                     ref={(input)=> this.passwordinput = input}
                     onChangeText={(pass) => this.setState({pass})}
@@ -80,6 +77,7 @@ export default class LogupScreen extends React.Component {
                     <Text  style={styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>                   
             </View>
+         </ScrollView>   
       </KeyboardAvoidingView>
     );
   }
